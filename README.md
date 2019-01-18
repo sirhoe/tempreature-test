@@ -16,7 +16,7 @@ tempreatureTest('Rainbow');
 ```
 ## License
 
-MIT © [Sir hoe]()
+MIT © [Sir Hoe Teo]()
 
 
 [npm-image]: https://badge.fury.io/js/tempreature-test.svg

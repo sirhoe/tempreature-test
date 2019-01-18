@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Sir Hoe Teo",
+      "authorEmail": "sirhoe@gmail.com",
+      "authorUrl": ""
+    }
+  }
+}
