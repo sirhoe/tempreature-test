@@ -1,12 +1,12 @@
-let store = [];
+let store = {};
 
-exports.save = (data) => {
-    // instantiate to array if id is saved for the first time
-    if(store[data.id] == undefined) {
-        store[data.id] = []
+exports.save = (id, temperature) => {
+    // instantiate to array if id is new
+    if(store[id] == undefined) {
+        store[id] = []
     } 
-    store[data.id].push(data);
-    return store[data.id];
+    store[id].push(temperature);
+    return store[id];
 }
 
 exports.find = (id) => {
@@ -26,5 +26,5 @@ exports.getIds = () => {
 }
 
 exports.resetStore = () => {
-    store = [];
+    store = {};
 }

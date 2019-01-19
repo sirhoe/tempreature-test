@@ -1,5 +1,5 @@
 {
-  "name": "tempreature-test",
+  "name": "temperature-test",
   "version": "0.0.0",
   "description": "SafetyCulture Take Home Test",
   "author": {
@@ -31,7 +31,7 @@
   "scripts": {
     "test": "jest"
   },
-  "repository": "sirhoe/tempreature-test",
+  "repository": "sirhoe/temperature-test",
   "jest": {
     "testEnvironment": "node"
   },
