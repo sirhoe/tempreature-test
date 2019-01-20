@@ -17,7 +17,11 @@ exports.getMode = (id) => {
 }
 
 exports.save = (data) => {
-    //validate data
+    // data is compulsory, handle bad param
+    data = data || {};
+    // validate data
+    if((typeof data.id !== 'string') || (typeof data.temperature !== 'number'))
+        throw Error('id must be string and temperature must be number');
     return storageHelper.save(data.id, data.temperature);
 }
 
