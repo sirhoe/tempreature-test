@@ -1,30 +1,30 @@
 let store = {};
 
 exports.save = (id, temperature) => {
-    // instantiate to array if id is new
-    if(store[id] == undefined) {
-        store[id] = []
-    } 
-    store[id].push(temperature);
-    return store[id];
-}
+  // instantiate to array if id is new
+  if (store[id] === undefined) {
+    store[id] = [];
+  }
+  store[id].push(temperature);
+  return store[id];
+};
 
 exports.find = (id) => {
-    let result = [];
-    if(store.hasOwnProperty(id)) {
-        result = store[id];
-    } 
-    return result;
-}
+  let result = [];
+  if (store.hasOwnProperty(id)) {
+    result = store[id];
+  }
+  return result;
+};
 
 exports.getIds = () => {
-    let ids = [];
-    for ( let prop in store ) {
-        ids.push(prop);
-    }
-    return ids;
-}
+  const ids = [];
+  for (const prop in store) {
+    ids.push(prop);
+  }
+  return ids;
+};
 
 exports.resetStore = () => {
-    store = {};
-}
+  store = {};
+};
