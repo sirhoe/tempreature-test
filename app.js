@@ -19,18 +19,18 @@ try {
     console.log(`Fail to invalid JSON file. msg: ${err.message}`)
 }
 
-jsonData.forEach((record) => {
-    if(uniqueIds.indexOf(record.id) === -1) {
-        uniqueIds.push(record.id);
+for (let i = 0; i < jsonData.length; i++) {
+    if(uniqueIds.indexOf(jsonData[i].id) === -1) {
+        uniqueIds.push(jsonData[i].id);
     }
-    temperatureLib.save(record);
-});
+    temperatureLib.save(jsonData[i]);
+};
 console.log(`Successful in saving file ${filename} with ${jsonData.length} records and ${uniqueIds.length} unique ids.`);
 
 //Prints statistic
-uniqueIds.forEach((id) => {
-    const average = temperatureLib.getAverage(id);
-    const median = temperatureLib.getMedian(id);
-    const mode = temperatureLib.getMode(id);
-    console.log(`id: ${id} average: ${average} median: ${median} mode: ${mode}`);
-});
+for (let i = 0; i < uniqueIds.length; i++) {
+    const average = temperatureLib.getAverage(uniqueIds[i]);
+    const median = temperatureLib.getMedian(uniqueIds[i]);
+    const mode = temperatureLib.getMode(uniqueIds[i]);
+    console.log(`id: ${uniqueIds[i]} average: ${average} median: ${median} mode: [${mode}]`);
+};

@@ -12,6 +12,8 @@ exports.getMedian = (id) => {
 }
 
 exports.getMode = (id) => {
+    const data = storageHelper.find(id);
+    return statisticHelper.calculateMode(data);
 }
 
 exports.save = (data) => {
