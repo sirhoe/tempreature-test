@@ -25,12 +25,21 @@ for (let i = 0; i < jsonData.length; i++) {
     }
     temperatureLib.save(jsonData[i]);
 };
-console.log(`Successful in saving file ${filename} with ${jsonData.length} records and ${uniqueIds.length} unique ids.`);
+// uncomment for debugging
+// console.log(`Successful in saving file ${filename} with ${jsonData.length} records and ${uniqueIds.length} unique ids.`);
 
 //Prints statistic
+let result = [];
 for (let i = 0; i < uniqueIds.length; i++) {
-    const average = temperatureLib.getAverage(uniqueIds[i]);
-    const median = temperatureLib.getMedian(uniqueIds[i]);
-    const mode = temperatureLib.getMode(uniqueIds[i]);
-    console.log(`id: ${uniqueIds[i]} average: ${average} median: ${median} mode: [${mode}]`);
+    const id = uniqueIds[i];
+    const average = temperatureLib.getAverage(id);
+    const median = temperatureLib.getMedian(id);
+    const mode = temperatureLib.getMode(id);
+    result.push({
+        id,
+        average,
+        median,
+        mode
+    });
 };
+console.log(JSON.stringify(result));
