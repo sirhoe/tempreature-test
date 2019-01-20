@@ -46,7 +46,9 @@ exports.calculateMode = (data) => {
     let mode = [];
     const temperatures = Object.keys(temperatureOccurrencesCount);
     for (let i = 0; i < temperatures.length; i++) {
-        const temperature = temperatures[i];
+        // object keys are in string. 
+        // parse to float
+        const temperature = parseFloat(temperatures[i]);
         // if the temperature occurrences is more frequent
         // reset the array and save the temperature value and
         // use it occurrence to compare with the next temperature's occurrence

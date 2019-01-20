@@ -17,6 +17,7 @@ try {
     jsonData = JSON.parse(data);
 } catch (err) {
     console.log(`Fail to invalid JSON file. msg: ${err.message}`)
+    process.exit(1);
 }
 
 for (let i = 0; i < jsonData.length; i++) {
@@ -43,3 +44,4 @@ for (let i = 0; i < uniqueIds.length; i++) {
     });
 };
 console.log(JSON.stringify(result));
+process.exit(0);
