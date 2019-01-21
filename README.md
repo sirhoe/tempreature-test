@@ -5,13 +5,13 @@
 The nodeJS application expects a path to a file with JSON array. Outputs the average, median and mode to screen in the required JSON format. Please pipe to a file if you wish to store the output.
 
 ```sh
-$ npm install
 $ node app.js sample.json
 $ node app.js sample.json > out.txt
 ```
 
 ## How to run unit test?
 ```sh
+$ npm install
 $ npm test
 ```
 
