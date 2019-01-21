@@ -1,8 +1,8 @@
 # temperature-test 
 > SafetyCulture Take Home Test
 
-## To run
-The nodeJS application expects a file path to a file with JSON array
+## How to run? 
+The nodeJS application expects a path to a file with JSON array. Outputs the average, median and mode to screen in the required JSON format. Please pipe to a file if you wish to store the output.
 
 ```sh
 $ npm install
@@ -10,20 +10,19 @@ $ node app.js sample.json
 $ node app.js sample.json > out.txt
 ```
 
-## To test
+## How to run unit test?
 ```sh
 $ npm test
 ```
 
-## Explanation
-Ideas behind the design
-1. Core functionality of the requirement are built into temperatureLib which can be turn into a npm module.
-2. Input are read into a datastore (its array now, can be redis/mongodb) which allow us to scale easier to process larger data sets (via streaming or multiple files). 
-3. Output are logged to console to pipe to file
+## Ideas/Assumption behind the decision
+1. Core functionality of the requirement are wrapped into a module named temperatureLib which can be turn into a npm package. 
+2. Inputs are first read into a datastore. Currently its a simple array but it should be redis/mongodb in the future which allow us to process larger data sets
+3. As we are building an console app, output are logged to console but the module temperatureLib is design to be easily used in express app or microservices.
 
-Why not build a express/microservce instead of a nodejs application? 
-1. I feel that there are much more details expected from a production quality API service, such as security, validation, error handling and etc. 
-2. Building a console based nodeJS application on the hand will allow us to focus more on the architecture, design and problem at hand.
+## Why build a nodeJS console application? why not build a express/microservce instead? 
+1. I feel that there are much more design details expected from a production quality API service, such as security, validation, error handling and etc. 
+2. Building a nodeJS console application allow us to focus more on the architecture, design and problem at hand.
 
 
 ## License

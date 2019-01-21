@@ -9,14 +9,20 @@ if (process.argv.length < 3) {
 
 // Read the file and save the content.
 const filename = process.argv[2];
-const data = fs.readFileSync(filename, 'utf8');
+let data;
+try {
+   data = fs.readFileSync(filename, 'utf8');
+} catch (err) {
+  console.log(`Fail to parse ${filename}. ${err.message}`);
+  process.exit(1);
+}
 
 let jsonData;
 const uniqueIds = [];
 try {
   jsonData = JSON.parse(data);
 } catch (err) {
-  console.log(`Fail to invalid JSON file. msg: ${err.message}`);
+  console.log(`Fail to parse invalid JSON file. ${err.message}`);
   process.exit(1);
 }
 
