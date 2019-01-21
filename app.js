@@ -7,7 +7,7 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 
-// Read the file and save the content.
+// Read the file
 const filename = process.argv[2];
 let data;
 try {
@@ -17,20 +17,27 @@ try {
   process.exit(1);
 }
 
+// Parse into JSON
 let jsonData;
 const uniqueIds = [];
 try {
   jsonData = JSON.parse(data);
 } catch (err) {
-  console.log(`Fail to parse invalid JSON file. ${err.message}`);
+  console.log(`Fail to parse JSON file. ${err.message}`);
   process.exit(1);
 }
 
+// Saves the data and keep track of the unique ids
 for (let i = 0; i < jsonData.length; i++) {
   if (uniqueIds.indexOf(jsonData[i].id) === -1) {
     uniqueIds.push(jsonData[i].id);
   }
-  temperatureLib.save(jsonData[i]);
+  try {
+    temperatureLib.save(jsonData[i]);
+  } catch (err) {
+    console.log(`Fail to save data. ${err.message}`);
+    process.exit(1);
+  }
 }
 
 // Calculate average, median and mode and prints the result
