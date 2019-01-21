@@ -28,35 +28,30 @@ exports.calculateMedian = (data) => {
 };
 
 exports.calculateMode = (data) => {
-  // use another object to count each temperature's occurrence in the aray
-  const temperatureOccurrencesCount = {};
+  // use an object to count each temperature's frequency in the aray
+  const freqCount = {};
+  let maxFrequency = 1;
+  let mode = [];
   for (let i = 0; i < data.length; i++) {
     const temperature = data[i];
-    temperatureOccurrencesCount[temperature] = temperatureOccurrencesCount[temperature] ? temperatureOccurrencesCount[temperature] + 1 : 1;
-  }
+    freqCount[temperature] = freqCount[temperature] ? freqCount[temperature] + 1 : 1;
 
-  // loop though all temperature and its occurrences
-  // compare and find the max.
-  // Store max temperature in maxTemperatures (can be more than one)
-  let curMaxOccurrences = 1;
-  let mode = [];
-  const temperatures = Object.keys(temperatureOccurrencesCount);
-  for (let i = 0; i < temperatures.length; i++) {
-    // object keys are in string.
-    // parse to float
-    const temperature = parseFloat(temperatures[i]);
-    // if the temperature occurrences is more frequent
-    // reset the array and save the temperature value and
-    // use it occurrence to compare with the next temperature's occurrence
-    if (temperatureOccurrencesCount[temperature] > curMaxOccurrences) {
-      curMaxOccurrences = temperatureOccurrencesCount[temperature];
+    // if the new count is more than the existing max frequency
+    // we have a new mode, update the new maxFrequency
+    if (freqCount[temperature] > maxFrequency) {
       mode = [];
       mode.push(temperature);
-    } else if (temperatureOccurrencesCount[temperature] === curMaxOccurrences) {
-    // if they have the same occurrences
-    // save the temperature value as another mod too
+      maxFrequency = freqCount[temperature];
+    } else if (freqCount[temperature] === maxFrequency) {
+      // if the new count is equal to the existing max
+      // we have more mode
       mode.push(temperature);
     }
+  }
+  // in a array where all the temperature is unique
+  // there is no mode
+  if (maxFrequency === 1) {
+    mode = [];
   }
   return mode;
 };
